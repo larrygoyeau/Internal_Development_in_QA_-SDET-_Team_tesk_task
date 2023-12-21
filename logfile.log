@@ -16,3 +16,18 @@
 2023-12-21 10:45:49,413 - Deleted '/content/replica/california_housing_train.csv' from replica.
 2023-12-21 10:45:58,052 - Copied or updated '/content/sample_data/california_housing_train.csv' to '/content/replica/california_housing_train.csv'.
 2023-12-21 10:46:39,331 - Created directory '/content/replica/Untitled Folder' in replica.
+2023-12-21 16:30:52,054 - Created directory '/content/replica' in replica.
+2023-12-21 16:30:52,055 - Copied or updated '/content/sample_data/anscombe.json' to '/content/replica/anscombe.json'.
+2023-12-21 16:30:52,056 - Copied or updated '/content/sample_data/README.md' to '/content/replica/README.md'.
+2023-12-21 16:30:52,069 - Copied or updated '/content/sample_data/california_housing_train.csv' to '/content/replica/california_housing_train.csv'.
+2023-12-21 16:30:52,230 - Copied or updated '/content/sample_data/mnist_train_small.csv' to '/content/replica/mnist_train_small.csv'.
+2023-12-21 16:30:52,315 - Copied or updated '/content/sample_data/mnist_test.csv' to '/content/replica/mnist_test.csv'.
+2023-12-21 16:30:52,320 - Copied or updated '/content/sample_data/california_housing_test.csv' to '/content/replica/california_housing_test.csv'.
+2023-12-21 16:31:45,711 - Deleted '/content/replica/mnist_train_small.csv' from replica.
+2023-12-21 16:31:46,811 - Created directory '/content/replica/.ipynb_checkpoints' in replica.
+2023-12-21 16:31:52,291 - Copied or updated '/content/sample_data/mnist_train_small.csv' to '/content/replica/mnist_train_small.csv'.
+2023-12-21 16:35:12,083 - Deleted '/content/replica/mnist_train_small.csv' from replica.
+2023-12-21 16:35:17,510 - Copied or updated '/content/sample_data/mnist_train_small.csv' to '/content/replica/mnist_train_small.csv'.
+2023-12-21 16:35:31,742 - Created directory '/content/replica/Untitled Folder' in replica.
+2023-12-21 16:35:39,521 - Copied or updated '/content/sample_data/Untitled Folder/README.md' to '/content/replica/Untitled Folder/README.md'.
+2023-12-21 16:35:39,521 - Deleted '/content/replica/README.md' from replica.
