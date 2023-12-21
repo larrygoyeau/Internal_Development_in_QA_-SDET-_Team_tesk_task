@@ -1,0 +1,18 @@
+2023-12-21 10:43:35,753 - Created directory 'replica' in replica.
+2023-12-21 10:43:35,754 - Copied or updated '/content/sample_data/anscombe.json' to 'replica/anscombe.json'.
+2023-12-21 10:43:35,755 - Copied or updated '/content/sample_data/README.md' to 'replica/README.md'.
+2023-12-21 10:43:35,763 - Copied or updated '/content/sample_data/california_housing_train.csv' to 'replica/california_housing_train.csv'.
+2023-12-21 10:43:35,910 - Copied or updated '/content/sample_data/mnist_train_small.csv' to 'replica/mnist_train_small.csv'.
+2023-12-21 10:43:36,059 - Copied or updated '/content/sample_data/mnist_test.csv' to 'replica/mnist_test.csv'.
+2023-12-21 10:43:36,066 - Copied or updated '/content/sample_data/california_housing_test.csv' to 'replica/california_housing_test.csv'.
+2023-12-21 10:44:47,719 - Created directory '/content/replica' in replica.
+2023-12-21 10:44:47,719 - Copied or updated '/content/sample_data/anscombe.json' to '/content/replica/anscombe.json'.
+2023-12-21 10:44:47,719 - Copied or updated '/content/sample_data/README.md' to '/content/replica/README.md'.
+2023-12-21 10:44:47,722 - Copied or updated '/content/sample_data/california_housing_train.csv' to '/content/replica/california_housing_train.csv'.
+2023-12-21 10:44:47,783 - Copied or updated '/content/sample_data/mnist_train_small.csv' to '/content/replica/mnist_train_small.csv'.
+2023-12-21 10:44:47,807 - Copied or updated '/content/sample_data/mnist_test.csv' to '/content/replica/mnist_test.csv'.
+2023-12-21 10:44:47,808 - Copied or updated '/content/sample_data/california_housing_test.csv' to '/content/replica/california_housing_test.csv'.
+2023-12-21 10:45:49,413 - Created directory '/content/replica/.ipynb_checkpoints' in replica.
+2023-12-21 10:45:49,413 - Deleted '/content/replica/california_housing_train.csv' from replica.
+2023-12-21 10:45:58,052 - Copied or updated '/content/sample_data/california_housing_train.csv' to '/content/replica/california_housing_train.csv'.
+2023-12-21 10:46:39,331 - Created directory '/content/replica/Untitled Folder' in replica.
