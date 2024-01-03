@@ -5,58 +5,61 @@ import argparse
 import logging
 from hashlib import md5
 
-def get_file_md5(filename):
+def calculate_md5_checksum(file_path):
     hash_md5 = md5()
-    with open( filename, "rb") as f:
-        for chunk in iter(lambda: f.read(4096), b""):
+    with open(file_path, "rb") as file:
+        for chunk in iter(lambda: file.read(4096), b""):
             hash_md5.update(chunk)
     return hash_md5.hexdigest()
 
-def synchronize_folders(source, replica):
-    for src_dir, _, files in os.walk( source):
-        dst_dir = src_dir.replace(source, replica, 1)
+def synchronize_directories(source_directory, replica_directory):
+    # Synchronize files from source to replica
+    for source_subdir, _, source_files in os.walk(source_directory):
+        corresponding_replica_subdir = source_subdir.replace(source_directory, replica_directory, 1)
 
-        if not os.path.exists(dst_dir ):
-            os.makedirs(dst_dir)
-            logging.info(f"Created directory '{dst_dir}' in replica.")
+        if not os.path.exists(corresponding_replica_subdir):
+            os.makedirs(corresponding_replica_subdir)
+            logging.info(f"Created directory '{corresponding_replica_subdir}' in replica.")
 
-        for file in files:
-            src_file = os.path.join(src_dir,file)
-            dst_file = os.path.join(dst_dir, file)
+        for file_name in source_files:
+            source_file_path = os.path.join(source_subdir, file_name)
+            replica_file_path = os.path.join(corresponding_replica_subdir, file_name)
 
-            if not os.path.exists(dst_file ) or get_file_md5(src_file) != get_file_md5(dst_file):
-                shutil.copy2(src_file, dst_file)
-                logging.info(f"Copied or updated '{src_file}' to '{dst_file}'.")
+            if (not os.path.exists(replica_file_path) or 
+                calculate_md5_checksum(source_file_path) != calculate_md5_checksum(replica_file_path)):
+                shutil.copy2(source_file_path, replica_file_path)
+                logging.info(f"Copied or updated '{source_file_path}' to '{replica_file_path}'.")
 
-    for replica_dir, _, files in os.walk(replica):
-        src_dir = replica_dir.replace(replica, source, 1)
+    # Remove extra files and directories from replica
+    for replica_subdir, _, replica_files in os.walk(replica_directory, topdown=False):
+        corresponding_source_subdir = replica_subdir.replace(replica_directory, source_directory, 1)
 
-        if not os.path.exists(src_dir):
-            shutil.rmtree(replica_dir)
-            logging.info(f"Deleted directory '{replica_dir}' from replica.")
+        if not os.path.exists(corresponding_source_subdir):
+            shutil.rmtree(replica_subdir)
+            logging.info(f"Deleted directory '{replica_subdir}' from replica.")
             continue
 
-        for file in files:
-            src_file = os.path.join(src_dir, file)
-            dst_file = os.path.join(replica_dir, file)
+        for file_name in replica_files:
+            source_file_path = os.path.join(corresponding_source_subdir, file_name)
+            replica_file_path = os.path.join(replica_subdir, file_name)
 
-            if not os.path.exists(src_file):
-                os.remove(dst_file )
-                logging.info(f"Deleted '{dst_file}' from replica.")
+            if not os.path.exists(source_file_path):
+                os.remove(replica_file_path)
+                logging.info(f"Deleted '{replica_file_path}' from replica.")
 
 def main():
-    parser = argparse.ArgumentParser(description="Synchronize two folders." )
-    parser.add_argument("source",help="Source folder path")
-    parser.add_argument("replica", help="Replica folder path")
-    parser.add_argument("interval",type=int, help="Synchronization interval in seconds")
-    parser.add_argument("logfile", help="Log file path")
-    args = parser.parse_args()
+    argument_parser = argparse.ArgumentParser(description="Synchronize two directories.")
+    argument_parser.add_argument("source_directory", help="Path to the source directory")
+    argument_parser.add_argument("replica_directory", help="Path to the replica directory")
+    argument_parser.add_argument("sync_interval_seconds", type=int, help="Synchronization interval in seconds")
+    argument_parser.add_argument("log_file_path", help="Path to the log file")
+    args = argument_parser.parse_args()
 
-    logging.basicConfig(filename=args.logfile, level=logging.INFO, format='%(asctime)s - %(message)s')
+    logging.basicConfig(filename=args.log_file_path, level=logging.INFO, format='%(asctime)s - %(message)s')
 
     while True:
-        synchronize_folders(args.source, args.replica)
-        time.sleep(args.interval)
+        synchronize_directories(args.source_directory, args.replica_directory)
+        time.sleep(args.sync_interval_seconds)
 
 if __name__ == "__main__":
     main()
